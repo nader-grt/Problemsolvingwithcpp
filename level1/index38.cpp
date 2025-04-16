@@ -3,7 +3,7 @@
 
 using namespace std ;
 
-//Problem of Seconds to Days Hours Minutes Seconds 2:5:45:35
+//Problem of Seconds to Days Hours Minutes Seconds 2:5:45:35  the inputs is  193 535
 
 //    cout << "Floor of 2.3 is : " << floor(2.3) << endl;
 
@@ -13,9 +13,9 @@ Output : 2
 */
 
 
-int ReadNumberPositive(string message)
+float ReadTotalSecondPositive(string message)
 {
-    int nbr = 0 ;
+    float nbr = 0 ;
     do
     {
      cout<<message<<endl ;
@@ -27,21 +27,31 @@ int ReadNumberPositive(string message)
 
 int main() {
 
-//    float  secondPerDay = 24 * 60 *60 ;
-//    float secondPerHours = 60 * 60 ;
-//    float secondPerMinute = 60 ;
+   const int   secondPerDay = 24 * 60 * 60 ;
+   const int  secondPerHours = 60 * 60 ;
+   const int  secondPerMinute = 60 ;
+  int  remainder = 0 ;
+   int  totalSeconds   = 0 ;
+    totalSeconds  = ReadTotalSecondPositive("Enter the number Positive please ! ")  ;
 
+int  numberOfDays = 0 , numberOfHours =0 , numberOfMinutes =0  , numbeROfSeconds =0 ;
+
+numberOfDays = floor(totalSeconds / secondPerDay) ;
+// this is remainder  number  of hours and minutes  without days
+remainder = ( totalSeconds   %  secondPerDay ) ;
+numberOfHours  = floor(remainder / secondPerHours )  ;
+// this is remainder  number  of seconds  and minutes  without    hours
+remainder = remainder   % secondPerHours ;
+numberOfMinutes  = floor( remainder / secondPerMinute) ;
 //
 
+remainder = remainder   % secondPerMinute ;
+numbeROfSeconds  = remainder  ;
 
-  // cout<<"\n The result D:H:M:S is "<<nbrDays<<":"<<nbrHours<<":"<<nbrMinutes<<":"<<nbrSecond<<endl ;
 
-
- cout << "Floor of 2.3 is : " << floor(2.3) << endl;
-  cout << "Floor of 2.7 is : " << floor(2.7) << endl;
-   cout << "Floor of 2.9 is : " << floor(2.9) << endl;
-
-     cout << "Floor of 2.5 is : " << floor(2.9) << endl;
      cout<<"\n" ;
+
+     cout<<numberOfDays <<":"<<numberOfHours<<":"<<numberOfMinutes<<":"<<numbeROfSeconds<<endl ;
+
     return 0;
 }
