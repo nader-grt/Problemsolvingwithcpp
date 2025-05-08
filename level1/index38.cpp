@@ -13,9 +13,9 @@ Output : 2
 */
 
 
-float ReadTotalSecondPositive(string message)
+int ReadTotalSecondPositive(string message)
 {
-    float nbr = 0 ;
+    int nbr = 0 ;
     do
     {
      cout<<message<<endl ;
@@ -27,26 +27,19 @@ float ReadTotalSecondPositive(string message)
 
 int main() {
 
-   const int   secondPerDay = 24 * 60 * 60 ;
-   const int  secondPerHours = 60 * 60 ;
-   const int  secondPerMinute = 60 ;
-  int  remainder = 0 ;
-   int  totalSeconds   = 0 ;
-    totalSeconds  = ReadTotalSecondPositive("Enter the number Positive please ! ")  ;
+  int  secondPerDays = 24 * 60 * 60 ;
+  int secondPerHours = 60 * 60 ;
+   int secondPerMinutes  = 60;
+ int  totalSeconds = 0  , remainder  ,numberOfDays  , numberOfHours ,numberOfMinutes , numbeROfSeconds ;
 
-int  numberOfDays = 0 , numberOfHours =0 , numberOfMinutes =0  , numbeROfSeconds =0 ;
-
-numberOfDays = floor(totalSeconds / secondPerDay) ;
-// this is remainder  number  of hours and minutes  without days
-remainder = ( totalSeconds   %  secondPerDay ) ;
-numberOfHours  = floor(remainder / secondPerHours )  ;
-// this is remainder  number  of seconds  and minutes  without    hours
-remainder = remainder   % secondPerHours ;
-numberOfMinutes  = floor( remainder / secondPerMinute) ;
-//
-
-remainder = remainder   % secondPerMinute ;
-numbeROfSeconds  = remainder  ;
+totalSeconds = ReadTotalSecondPositive("Enter the number total of seconds please !")  ;
+  numberOfDays =  floor(totalSeconds / secondPerDays) ;
+  remainder =  totalSeconds % secondPerDays  ;
+numberOfHours = floor( remainder /  secondPerHours) ;
+remainder  = remainder %  secondPerHours  ;
+numberOfMinutes  =  floor( remainder / secondPerMinutes )  ;
+remainder =    remainder % secondPerMinutes   ;
+numbeROfSeconds  =  remainder  ;
 
 
      cout<<"\n" ;
