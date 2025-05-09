@@ -23,3 +23,29 @@ The goal is to build a strong foundation in:
 1. Clone the repo:
    ```bash
    git clone https://github.com/nader-grt/Problemsolvingwithcpp.git
+
+---
+
+### 📤  Be happy
+2. Push Project from Local to GitHub
+
+**Open your terminal**, then run the following commands:
+
+```bash
+# Step into your project folder
+cd path/to/your-project
+
+# Initialize Git (if not already)
+git init
+
+# Add all files including README.md
+git add .
+
+# Commit your changes
+git commit -m "Initial commit with C++ files and README"
+
+# Add the remote GitHub repo (replace the URL with yours)
+git remote add origin https://github.com/your-username/problem-solving-cpp-level1.git
+
+# Push to GitHub
+git push -u origin main
