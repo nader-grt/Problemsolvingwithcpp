@@ -22,13 +22,13 @@ float CalculateSumOf3Numbers(int num1 ,int num2 ,int num3)
     return    (num1 + num2 + num3)     ;
 }
 
-float CalculateAverage()
+float CalculateAverage(int num1 ,int num2 ,int num3)
 {
-    
+     return (float)  (CalculateSumOf3Numbers(num1 ,num2 ,num3) /3)
 }
-void PrintResultAverageThreeNumbers(int TOtal)
+void PrintResultAverageThreeNumbers(int Average)
 {
-    cout<<" \n Your total is "<<TOtal <<endl ;
+    cout<<" \n Your Average is "<<Average <<endl ;
 }
 
 int main() {
@@ -38,8 +38,10 @@ int main() {
    cout<<"======================================================================\n";
 
 int  num1 ,num2 ,num3 ;
+ReadNumbers(num1 ,num2 ,num3 ) ;
 
 
+PrintResultAverageThreeNumbers(CalculateAverage( num1 ,num2 ,num3 ))  ;
      cout<<"\n" ;
     return 0;
 }
