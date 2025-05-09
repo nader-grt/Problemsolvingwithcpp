@@ -16,7 +16,8 @@ The goal is to build a strong foundation in:
 - Control statements
 - Loops
 - Functions
-- Basic data structures
+- pass parameter by value vs ref 
+- Basic data structures like enum struct
 
 ## 🚀 Getting Started
 
