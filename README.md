@@ -31,7 +31,7 @@ The goal is to build a strong foundation in:
 
 **Open your terminal**, then run the following commands:
 
-```bash
+
 # Step into your project folder
 cd path/to/your-project
 
