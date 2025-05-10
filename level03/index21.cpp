@@ -7,40 +7,34 @@ using namespace std ;
 
 
 
-
-
-
-void ReadNumbers(int &A,int &D)
+float ReadLengethSquare()
 {
-      cout <<" \n Enter Your number 1 : "<<endl ;
-  cin>>A  ;
-    cout <<" \n Enter Your number 2 : "<<endl ;
-  cin>>D  ;
+    int LengthSquare ;
+    cout<<" \n PLZ Enter the LengthSquare? "  <<endl  ;
+    cin>>LengthSquare ;
+    return LengthSquare ;
 
 }
 
-float  RectangleAreaBySideAndDiagonal(int A,int D)
+float  CalculateCircleAreaInsideSquare(float LengthSquare)
 {
-    float Area  = A * sqrt(pow(D,2) - pow(A,2))  ;
-  return Area   ;
+    const float PI  =3.14159  ;
+    float Area = ( pow(LengthSquare,2)  * PI) /4  ;
+    return Area ;
 }
 
 void PrintResultArea(float Area)
 {
-  cout<<"\n Your Area is " + to_string(Area)  <<endl ;
+  cout<<"\n Your Cirle Area By Diameteris " + to_string(Area)  <<endl ;
 }
-
-
 int main() {
    
    cout<<"======================================================================\n";
    cout<<"===                Training using c++ languages App               ====\n"                              ;
    cout<<"======================================================================\n";
 
-int A, D ;
 
-ReadNumbers(A,D)  ;
-PrintResultArea(RectangleAreaBySideAndDiagonal(A,D))  ;
+PrintResultArea(CalculateCircleAreaInsideSquare(ReadLengethSquare()))  ;
      cout<<"\n" ;
     return 0;
 }

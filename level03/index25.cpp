@@ -5,25 +5,30 @@
 
 using namespace std ;
 
-float ReadRadious()
+int ReadAge()
 {
-    int Rad ;
-    cout<<" \n PLZ Enter the Radious ? "  <<endl  ;
-    cin>>Rad
-    return Rad ;
+  int Age ;
+  do
+  {
+    cout<<"\n Enter Your Age PLZ? "<<endl ;
+    cin >>Age ;
+  } while (Age< 0);
 
+  return Age ;
+  
 }
 
-float  CalculateCircleArea(float Rad)
+bool ValidateNumberInRange(int Number , int From ,int To)
 {
-    const float PI  =3.14159  ;
-    float Area = pow(Rad,2)  * PI ;
-    return Area ;
+  return   Number >=From  && Number <= To   ;
 }
 
-void PrintResultArea(float Area)
+void PrintResult(int Age)
 {
-  cout<<"\n Your Cirle Area is " + to_string(Area)  <<endl ;
+  if(ValidateNumberInRange(Age,18 ,45))
+  cout<< Age<< " is valide Age"<<endl ;
+  else 
+  cout <<Age <<" is invalide Age" <<endl ;
 }
 
 int main() {
@@ -32,7 +37,7 @@ int main() {
    cout<<"===                Training using c++ languages App               ====\n"                              ;
    cout<<"======================================================================\n";
 
-PrintResultArea(CalculateCircleArea( ReadRadious())   )  ;
+PrintResult(ReadAge())   ;
      cout<<"\n" ;
     return 0;
 }
