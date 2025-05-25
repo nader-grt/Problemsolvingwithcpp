@@ -7,6 +7,46 @@
 using namespace std ;
 
 
+void FillArrayWitHardCoe(int SourceArr[100] ,int &SourceLength)
+{
+  SourceLength = 5 ;
+  SourceArr[0]  = 10 ;
+    SourceArr[1]  = 20 ;
+      SourceArr[2]  = 30;
+        SourceArr[3]  = 20 ;
+          SourceArr[4]  = 10 ;
+
+
+
+}
+
+
+void PrintArray(int  SourceArr[100] ,int SourceLength)
+{
+  for (int  i = 0; i < SourceLength; i++)
+  {
+    cout<<"   "<<SourceArr[i]  ;
+  }
+  cout<<"\n"  ;
+}
+
+bool IsPalindromArray(int  SourceArr[100] ,int SourceLength)
+{
+
+  for (int  i = 0; i < SourceLength; i++)
+  {
+      if(SourceArr[i] != SourceArr[SourceLength -1 -i]) 
+      return false ;
+  }
+  return true ;
+}
+
+
+
+
+
+
+
 int main() {
    
    cout<<"======================================================================\n";
@@ -14,6 +54,25 @@ int main() {
    cout<<"======================================================================\n";
 
   srand((unsigned)time(NULL)); // using this with rand function
+int SourceArr[100] ,SourceLength  ;
+
+
+
+FillArrayWitHardCoe(SourceArr,SourceLength)  ;
+
+
+cout<<"\n Array 1 Elements : " ;
+
+PrintArray(SourceArr,SourceLength)  ;
+
+if(IsPalindromArray(SourceArr,SourceLength) )
+cout<<"\n Yes it is Palindrom Array : " ;
+else 
+cout<<"\n No it is NOT  Palindrom Array : " ;
+
+
+
+
 
 
    cout<<"\n \n \n \n \n \n \n \n \n \n " ;
