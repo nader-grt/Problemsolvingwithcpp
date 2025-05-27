@@ -9,7 +9,7 @@
 #include <fstream>
 #include <filesystem>
 
-#include "LibraryOrPackage/MyLib.h" ;
+//#include "LibraryOrPackage/MyLib.h" ;
 
 
 using namespace std ;
@@ -28,6 +28,11 @@ int main() {
    //cin.ignore(1,'\n') ;
 
 
+  int size = MyLib::ReadNumber("\nEnter the matrix size: ");
+  // Allocate rows
+    int** matrix = new int*[size];
+    for (int i = 0; i < size; ++i)
+        matrix[i] = new int[size];  // Allocate columns
 
 
 
@@ -41,6 +46,10 @@ int main() {
 
 
 
+
+  for (int i = 0; i < size; ++i)
+        delete[] matrix[i];
+    delete[] matrix;
 
 
 

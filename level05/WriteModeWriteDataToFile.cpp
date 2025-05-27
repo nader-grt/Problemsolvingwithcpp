@@ -7,9 +7,11 @@
 #include <iomanip> 
 #include <vector>
 #include <fstream>
+
 #include <filesystem>
 
-#include "LibraryOrPackage/MyLib.h" ;
+
+#include "LibraryOrPackage/MyLib.h" 
 
 
 using namespace std ;
@@ -27,10 +29,29 @@ int main() {
 
    //cin.ignore(1,'\n') ;
 
+     string dirPath = "../WORKWITHFILE";
+    filesystem::create_directories(dirPath);  // Create directory if it doesn't exist
+
+    string filePath = dirPath + "/file.txt";
+
+       fstream MyFile ;
+
+MyFile.open(filePath,ios::out)  ;  // write mode
 
 
+if(MyFile.is_open())
+{
 
+    for (int i = 0; i < 1; i++)
+    {
+       MyFile << "\n Hello this is content in file" ;
+        MyFile << "\n when more practice more understand" ;
+         MyFile << "\n Get GOOD RESULT " ;
 
+        
+    }
+     MyFile.close()  ;
+}
 
 
 

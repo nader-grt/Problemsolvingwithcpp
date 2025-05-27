@@ -7,6 +7,8 @@
 #include <limits>
 #include <cstdlib>    // Include cstdlib for rand() and srand() functions.
 #include <ctime>      // Include ctime for the time() function
+#include <filesystem>
+
 using namespace std ;
 
 
@@ -51,4 +53,23 @@ using namespace std ;
         }
 
     }
+
+     string FindDirectoryPathWithFileExtension(const string& message ,string& NameDirotory ) {
+           string dirPath ="" ;
+
+        if(NameDirotory.length() > 0)
+         dirPath = NameDirotory ;
+         else
+          {
+             dirPath = "MylibraryWORKWITHFILE";
+    filesystem::create_directories(dirPath); // Create directory if not exists
+          }
+    
+
+    string fileName;
+    cout << message << endl;
+    cin >> fileName;
+
+    return dirPath + "/" + fileName + ".txt";
+}
  }

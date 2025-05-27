@@ -86,30 +86,38 @@ StComputer GetChoicesWithComputer(StComputer &Computer)
 StEachRoundResultOnce  GetWinnerForEachRoundCoputerOrPlayer(StPlayer &Player ,StComputer &Computer , StEachRoundResultOnce &EachRoundResultOnce)
 {
  // StHowWinner  HowWinner ;
-  
+        int CountHowWinnerCountPlayer = 0 ,CountHowWinnerCountComputer = 0 ,CountCountEqualWithPlayerOrVomputer =0 ;
   
        if(Player.NumberChoicePlayer > Computer.NumberChoiceComputer)
        {
    
         // return "Player" ;
+        int count = 0 ;
+
          EachRoundResultOnce.HowWinner.Winner  = "Player"  ;
-         EachRoundResultOnce.HowWinner.HowWinnerCountPlayer++ ;
+          CountHowWinnerCountPlayer++ ;
+          count =  CountHowWinnerCountPlayer ;
+         EachRoundResultOnce.HowWinner.HowWinnerCountPlayer = count ;
        }
       
        else if(Player.NumberChoicePlayer < Computer.NumberChoiceComputer)
        {
         
-         
+          int count = 0 ;
+
          EachRoundResultOnce.HowWinner.Winner  = "Computer" ;
-        EachRoundResultOnce.HowWinner.HowWinnerCountComputer  = (  Computer.CountComputerWin)++ ;
+         CountHowWinnerCountComputer++ ;
+         count = CountHowWinnerCountComputer ;
+        EachRoundResultOnce.HowWinner.HowWinnerCountComputer  = count ;
        }
        
         else
         {
-        
+             int count = 0 ;
             EachRoundResultOnce.HowWinner.Winner  = "No Winner" ;
-
-             EachRoundResultOnce.HowWinner.CountEqualWithPlayerOrVomputer  =  ( (EachRoundResultOnce.CountEqualWithPlayerOrVomputer)++ );
+            CountCountEqualWithPlayerOrVomputer++ ;
+            count = CountCountEqualWithPlayerOrVomputer ;
+             EachRoundResultOnce.HowWinner.CountEqualWithPlayerOrVomputer  =  count ;
         }
 
         return EachRoundResultOnce  ;

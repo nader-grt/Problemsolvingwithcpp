@@ -148,7 +148,8 @@ stGameResults PlayGame(short HowManyRounds)
         PrintRoundResults(RoundInfo);
     }
 
-    return { HowManyRounds, Player1WinTimes, ComputerWinTimes, DrawTimes, WhoWonTheGame(Player1WinTimes, ComputerWinTimes), WinnerName(WhoWonTheGame(Player1WinTimes, ComputerWinTimes)) };
+    return { HowManyRounds, Player1WinTimes, ComputerWinTimes, DrawTimes,
+     WhoWonTheGame(Player1WinTimes, ComputerWinTimes), WinnerName(WhoWonTheGame(Player1WinTimes, ComputerWinTimes)) };
 }
 
 // Function: StartGame
