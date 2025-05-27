@@ -127,7 +127,8 @@ void DrawGame(StMap &Map, StSnake &Snake ,stPlayer &Player ,StPosition &Position
             if (y == 0 || y == Map.height - 1 || x == 0 || x == Map.width - 1) {
                 cout << "*";
             } else if (x == Map.fruitX && y == Map.fruitY) {
-                cout << "$";
+              //  cout << "$";
+                cout << "\033[32m$\033[0m";
             } else if (x == Snake.headX && y == Snake.headY) {
                 //cout << "O";
                  GenearateSnake(Player) ;
@@ -160,6 +161,7 @@ void MoveSnake(StSnake &Snake ,StMap &Map ,stPlayer &Player ,StPosition &Positio
      }
      if( ( Position.PositionX == Snake.headX && Position.PositionY == Snake.headY) )  
      {
+        cout << "\a";
           GenearateSnake(Player) ;
      }
 }
