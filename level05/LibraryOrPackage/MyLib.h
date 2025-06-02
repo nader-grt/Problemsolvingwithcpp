@@ -19,7 +19,8 @@ using namespace std ;
 {
             int Number = 0;
             cout <<message<< endl;
-            cin >> Number;
+
+               cout<<"\n  " ; cin >> Number;
             while (cin.fail())
             {
                 // user didn't input a number
@@ -72,4 +73,66 @@ using namespace std ;
 
     return dirPath + "/" + fileName + ".txt";
 }
+
+
+       void FillMatrixWithRandomNumber(int  matrix[3][3],int rows, int cols)
+       {
+                for (int  i = 0; i < rows ; i++)
+                {
+                        for (int j = 0;j < cols ;j++)
+                        {
+                           matrix[i][j]  = RandomNumber(1,100) ;
+                        }
+                   
+                }
+                
+
+       }
+   
+
+       void PrintMatrixWithRandomNumber(int matrix[3][3] ,int rows, int cols)
+       {
+
+
+
+
+                for (int  i = 0; i < rows ; i++)
+                {
+                        for (int j = 0;j < cols ;j++)
+                        {
+                           printf("%0*d \t ",2,  matrix[i][j] )  ;
+                        }
+                   cout<<"\n"  ;
+                }
+                
+        
+       }
+
+       char ReadOnceLetter(string message)
+         {
+            char ch = ' ' ;
+            cout<<message<<endl ;
+               cin>>ch ;
+               return ch ;
+         }
+
+
+
+                  string ReadString(string message)
+                  {
+                     cout<<message<<endl ;
+
+                     string line = " " ;
+                     getline(cin,line) ;
+
+                     return line ;
+                  }
+
+
+
+                                          
+                  char IsInvertedOnceLetter(char ch)
+                  {
+                     return isupper(ch) ? tolower(ch) : toupper(ch) ;
+                  }
  }
