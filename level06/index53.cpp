@@ -59,8 +59,6 @@ vector<string> SplitFunction(string s1 ,string &delim)
 void DisplayTokenElement(vector <string> vTokenElement)
 {
 
-    // string s = "123";
-    // int num = stoi(s);
 
        cout<<"Tokens "<<vTokenElement.size()  <<endl ;
     for (string  &ele : vTokenElement)

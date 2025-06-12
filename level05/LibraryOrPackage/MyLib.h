@@ -10,6 +10,7 @@
 #include <filesystem>
 
 using namespace std ;
+namespace fs = std::filesystem; // alias for std::filesystem
 
 
 
@@ -55,7 +56,7 @@ using namespace std ;
 
     }
 
-     string FindDirectoryPathWithFileExtension(const string& message ,string& NameDirotory ) {
+     string FindDirectoryPathWithFileExtension( string message ,string NameDirotory ) {
            string dirPath ="" ;
 
         if(NameDirotory.length() > 0)
@@ -135,4 +136,37 @@ using namespace std ;
                   {
                      return isupper(ch) ? tolower(ch) : toupper(ch) ;
                   }
+
+
+                //  HANDLE FILE 
+                  string GetBaseDirectoryFromUser() 
+                  {
+                     string baseDir;
+
+                        cout << "Enter base directory (e.g. /home/yourname): ";
+                        getline(cin, baseDir);
+
+                        while (!fs::exists(baseDir) || !fs::is_directory(baseDir)) {
+                           cerr << " Invalid directory path. Please enter a valid directory: ";
+                           getline(cin, baseDir);
+                        }
+
+                        return baseDir;
+                }
+
+            string GetFolderNameFromUser() 
+            {
+               string folderName;
+
+               cout << "Enter folder name to search for: ";
+               getline(cin, folderName);
+
+                     // Simple validation: folder name should not be empty
+                     while (folderName.empty()) {
+                        cerr << "Folder name cannot be empty. Please enter a valid folder name: ";
+                        getline(cin, folderName);
+                     }
+
+                   return folderName;
+            }
  }
