@@ -176,29 +176,34 @@ string GetFolderNameFromUser()
 
 
                        if (vElements.size() >= 5) {
-          listClient.AccountNumber = vElements[0];
-          listClient.PinCode = vElements[1];
-          listClient.Name = vElements[2];
-          listClient.Phone = vElements[3];
-        try {
-              listClient.BalanceAccount = stof(vElements[4]);
-        } catch (const std::exception& e) {
-            cout << "Invalid balance: " << vElements[4] << " — setting to 0.0\n";
-              listClient.BalanceAccount = 0.0f;
-        }
-    } else {
-        cout << "Error: not enough data to fill client.\n";
-    }
+                            listClient.AccountNumber = vElements[0];
+                            listClient.PinCode = vElements[1];
+                            listClient.Name = vElements[2];
+                            listClient.Phone = vElements[3];
+
+                            try 
+                            {
+                                 
+                             listClient.BalanceAccount = stof(vElements[4]);
+
+                            }catch (const std::exception& e) {
+                                cout << "Invalid balance: " << vElements[4] << "  setting to 0.0\n";
+                                  listClient.BalanceAccount = 0.0f;
+                            }
+                        }else
+                         {
+                            cout << "Error: not enough data to fill client.\n";
+                         }
               
-             return     listClient ; 
+                          return     listClient ; 
 
         }
 
         vector<Stclient>   ParseAllClients(vector <string> &vContentFile )
        {
                  
-                  Stclient  listClient[3]   ;
-  vector<Stclient> clients;
+                  
+                  vector<Stclient> clients;
 
                 
                   

@@ -25,6 +25,7 @@ namespace fs = std::filesystem; // alias for std::filesystem
 
 
  * 
+ اللهم فاطر السماوات والارض عالم الغيب والشهادة انت تحكم بين عبادك فيما كانو فيه يختلفون
  * 
  
  */
