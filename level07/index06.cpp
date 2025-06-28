@@ -43,29 +43,39 @@ short NumberOfDaysInYear(short Number)
 {
   return   IsLeapYear(Number) ? 366 : 365 ; 
 }
-short NumberOfDayInMonth(short Number)
+short NumberOfDayInMonth(short Number ,short month )
 {
 
-     return NumberOfDaysInYear(Number) == 366 ? 29 :28 ;
+         
+
+         if(month == 2)
+         {
+              return (NumberOfDaysInYear(Number) == 366)   ? 29 :28 ;
+         }
+
+     
+ 
+
+     return ( month == 1 || month == 3 || month == 5 ||  month == 7 || month == 8 || month == 11 || month == 12) ? 31 : (month >12 || month <1) ? 0 : 30 ;
 }
 
-short NumberOfHoursInMonth(short Number)
+short NumberOfHoursInMonth(short Number,short month )
 {
 
-      return   NumberOfDayInMonth(Number) * 24 ;
+      return   NumberOfDayInMonth(Number, month ) * 24 ;
 }
 
-int NumberOfMinuteInMonth(short Number)
+int NumberOfMinuteInMonth(short Number ,short month )
 {
 
-    return      NumberOfHoursInMonth(Number) * 60   ;
+    return      NumberOfHoursInMonth(Number, month ) * 60   ;
 
 }
 
-int  NumberOfSecondsInMonth(short Number)
+int  NumberOfSecondsInMonth(short Number,short month )
 {
 
-  return  NumberOfMinuteInMonth(Number) * 60;
+  return  NumberOfMinuteInMonth(Number, month ) * 60;
   
 }
 
@@ -77,11 +87,11 @@ void  PrintNumberOfDaysHoursMinuteSecondInMoth()
             short Month  = MyLib::ReadNumber("\n Enter  a Month two please to check ? ")  ;
 
              
-               printf("\n Numbers Of  Days  in Month  [%d]  is  %d ",Month,NumberOfDayInMonth(year) ) ;
+               printf("\n Numbers Of  Days  in Month  [%d]  is  %d ",Month,NumberOfDayInMonth(year,Month) ) ;
 
-               printf("\n Numbers Of  Hours in Month  [%d]  is  %d ",Month,NumberOfHoursInMonth(Month) ) ;
-               printf("\n Numbers Of  Hours in Month  [%d]  is  %d ",Month,NumberOfMinuteInMonth(Month) ) ;
-               printf("\n Numbers Of  Hours in Month  [%d]  is  %d ",Month,NumberOfSecondsInMonth(Month) ) ;
+               printf("\n Numbers Of  Hours in Month  [%d]  is  %d ",Month,NumberOfHoursInMonth(Month,Month) ) ;
+               printf("\n Numbers Of  Hours in Month  [%d]  is  %d ",Month,NumberOfMinuteInMonth(Month,Month) ) ;
+               printf("\n Numbers Of  Hours in Month  [%d]  is  %d ",Month,NumberOfSecondsInMonth(Month,Month) ) ;
 
 }
 

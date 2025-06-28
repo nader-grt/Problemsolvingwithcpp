@@ -493,7 +493,13 @@ enum enTransactionOperation {WITHDRAW =1 ,DEPOSIT =2 ,BALANCETOTAL = 3 ,GoBackTo
                cin.get(); // Wait for Enter key
           ShowMenuProjectBank();
       }
-
+        void PrintRecordClientWithTransaction(Stclient &client)
+       {
+                    cout << "| " << setw(15) << left << client.AccountNumber;
+                    cout << "| " << setw(10) << left << client.PinCode;
+                    cout << "| " << setw(40) << left << client.Name;
+                    cout << "| " << setw(12) << left << client.BalanceAccount;
+       }
       int ReadAmountDeposit()
       {
            int DepositAmount  = 0 ;
@@ -502,32 +508,42 @@ enum enTransactionOperation {WITHDRAW =1 ,DEPOSIT =2 ,BALANCETOTAL = 3 ,GoBackTo
            return  DepositAmount ; 
       }
 
-      Stclient  AddDepositAmountInRecordOrClient(float &DepositAmount , Stclient &Client)
+      Stclient  OpperationAddDepositAmountInRecordOrClient(float &DepositAmount,Stclient& clientChange)
       {
         Stclient  client ;  
         client.BalanceAccount += DepositAmount ;
+        client.AccountNumber = clientChange.AccountNumber ;
+          client.PinCode = clientChange.PinCode ;
+        client.Name    = clientChange.Name   ;
+        client.Phone  = clientChange.Phone ;
         return   client  ;
-
 
       }
       
-      vector <Stclient> GetDepositAmountWithSuccess(vector <Stclient> &vElmentsClientUpdated,string AccountNumber , Stclient &Client)
+      vector <Stclient> GetDepositAmountWithSuccess(vector <Stclient> &vElmentsClients,string AccountNumber )
       {
-                   vector <Stclient> vElments ;
-                   for (Stclient &C : vElmentsClientUpdated)
-                   {
-                       if(C.AccountNumber  == AccountNumber)
-                       {
-                        vElments.push_back(C)  ;
-                       }
-                   }
-                   return vElments ;
+               
+
+                    vector<Stclient> vElmentsDeposit;
+                    vElmentsDeposit  = vElmentsClients  ;
+
+                    for (Stclient& client : vElmentsDeposit)
+                    {
+                        if (client.AccountNumber == AccountNumber)
+                        {
+                            vElmentsDeposit.push_back(client);
+                             SaveDataClientToFile(vElmentsClients,AccountNumber,client)  ;
+                        }
+                    }
+
+                     return vElmentsDeposit;
                   
       }
+      
 
       void DepositWithAccountNumber()
       {
-                           vector <Stclient>  vElmentsClientUpdated , vElmentsClients = LoadDatafromFile()  ;
+                           vector <Stclient> vElmentsResult  , vElmentsClients = LoadDatafromFile()  ;
                           
                             Stclient Client ,clientDeposite ;
              
@@ -554,15 +570,23 @@ enum enTransactionOperation {WITHDRAW =1 ,DEPOSIT =2 ,BALANCETOTAL = 3 ,GoBackTo
                                        if(C.AccountNumber == AccountNumber)
                                        {
 
-                                         C = AddDepositAmountInRecordOrClient(DepositAmount, Client) ;
+                                         C = OpperationAddDepositAmountInRecordOrClient(DepositAmount ,C) ;
                                          clientDeposite = C ;
+                                          
                                          break; 
                                        }
                                    }
                                    
                                     cout<<"\n \n Done with success Your Balance Acount for this client is ";
                                     cout<<clientDeposite.BalanceAccount ;
-                                    GetDepositAmountWithSuccess(vElmentsClientUpdated,AccountNumber,Client)  ;
+
+                                        vElmentsClients=    GetDepositAmountWithSuccess(vElmentsClients,AccountNumber)  ;
+
+                                 
+
+                                        
+                             
+                                 
                                     break;
                                 }
 
@@ -570,9 +594,7 @@ enum enTransactionOperation {WITHDRAW =1 ,DEPOSIT =2 ,BALANCETOTAL = 3 ,GoBackTo
                             {
                               cout<<"\n Client with  [ " << AccountNumber <<" ] Does not exist " ;
 
-
                             }
-                            /* code */
                           } while (!SearchByAccountNumber(vElmentsClients ,AccountNumber,Client));
                           
 
@@ -581,20 +603,135 @@ enum enTransactionOperation {WITHDRAW =1 ,DEPOSIT =2 ,BALANCETOTAL = 3 ,GoBackTo
 
 
 
+
+
+
+
+        vector <Stclient> GetWithdrawAmountWithSuccessToFile(vector <Stclient> &vElmentsClients,string AccountNumber )
+      {
+               
+
+                    vector<Stclient> vElmentsWithdraw;
+                    vElmentsWithdraw  = vElmentsClients  ;
+
+                    for (Stclient& client : vElmentsWithdraw)
+                    {
+                        if (client.AccountNumber == AccountNumber)
+                        {
+                            vElmentsWithdraw.push_back(client);
+                             SaveDataClientToFile(vElmentsClients,AccountNumber,client)  ;
+                        }
+                    }
+
+                     return vElmentsWithdraw;
+                  
+      }
+
+
+      int ReadAmountWithdraw()
+      {
+           int WithdrawAmount  = 0 ;
+           cout <<"\n Please Enter WithdrawAmount ";
+           cin>>WithdrawAmount ;
+           return  WithdrawAmount ; 
+      }
+
+       Stclient OpperationWithdrawAmountInRecordOrClient(float &WithdrawAmount ,Stclient  &clientChange) 
+       {
+              Stclient  client ;  
+        client.BalanceAccount -= WithdrawAmount ;
+        client.AccountNumber = clientChange.AccountNumber ;
+        client.PinCode = clientChange.PinCode ;
+        client.Name    = clientChange.Name   ;
+        client.Phone  = clientChange.Phone ;
+        return   client  ;
+
+       }
+
       void MakeWithdrawlByACCOUNTnUMBER()
       {
 
                        vector <Stclient>  vElmentsClientUpdated , vElmentsClients = LoadDatafromFile()  ;
-                            string AccountNumber =  ReadAccountNumber()  ;
-                            Stclient Client  ;
+                         //   string AccountNumber =  ReadAccountNumber()  ;
+                            Stclient Client ,clientWithdraw ;
+                              string AccountNumber = "" ;
+                              float  WithdrawAmount  = 0 ;
+                              char Answer = 'n' ;
+
+                            do
+                            {
+                                       AccountNumber =  ReadAccountNumber()  ;
+                                        
+                              if(SearchByAccountNumber(vElmentsClients ,AccountNumber,Client))
+                              {
+                                 PrintClientDetails(Client)  ;
+                                    WithdrawAmount  =  ReadAmountWithdraw() ; 
+                                    while (WithdrawAmount > Client.BalanceAccount)
+                                    {
+                                      cout << " \n You  have in your  balance that "<< Client.BalanceAccount ;
+                                       WithdrawAmount  =  ReadAmountWithdraw() ; 
+                                       break;
+                                    }
+                                    
+                                cout<<"\n \n Are you sure you want perform this transaction [y/n]  " ; 
+
+                                cin>>Answer  ;
+                                //
+                                if(Answer == 'y' || Answer == 'Y')
+                                 {
+                               
+                                            for (Stclient &C : vElmentsClients)
+                                            {
+                                                if(C.AccountNumber == AccountNumber)
+                                                {
+
+                                                  C = OpperationWithdrawAmountInRecordOrClient(WithdrawAmount ,C) ;
+                                                  clientWithdraw = C ;
+                                                    
+                                                  break; 
+                                                }
+                                            }
+
+                                             cout<<"\n \n Done with success Your Balance Acount for this client is ";
+                                    cout<<clientWithdraw.BalanceAccount ;
+                                      vElmentsClients =    GetWithdrawAmountWithSuccessToFile(vElmentsClients,AccountNumber)  ;
+                                 }
+
+                              }else
+                              {
+                                cout<<"\n Client with  [ " << AccountNumber <<" ] Does not exist " ;
+
+
+                              }
+                            } while (!SearchByAccountNumber(vElmentsClients ,AccountNumber,Client));
+                            
       }
 
       
       void PrintListClientWithTotalBalance()
       {
-                              vector <Stclient>  vElmentsClientUpdated , vElmentsClients = LoadDatafromFile()  ;
-                            string AccountNumber =  ReadAccountNumber()  ;
-                            Stclient Client  ;
+                          vector <Stclient>  vElmentsResult , vElmentsClients = LoadDatafromFile()  ;
+                      
+                           float tOtalBalance = 0 ;
+
+                                    cout << "\n\t\t\t\t\t Client List (" << vElmentsClients.size() << ") Client(s).";
+          cout <<"\n_______________________________________________________";
+          cout << "_________________________________________\n" << endl;
+          cout << "| " << left << setw(15) << "Accout Number";
+          cout << "| " << left << setw(10) << "Pin Code";
+          cout << "| " << left << setw(40) << "Client Name";
+          cout << "| " << left << setw(12) << "Balance";
+          cout <<"\n_______________________________________________________";
+          cout << "_________________________________________\n" << endl;
+          for (Stclient &Client : vElmentsClients)
+          {
+            tOtalBalance  += Client.BalanceAccount  ;
+            PrintRecordClientWithTransaction(Client);
+            cout << endl;
+          }
+          cout <<"\n_______________________________________________________";
+          cout << "_________________________________________\n" << endl;
+          cout<<"\t \t \t \t  Total balance is "<< tOtalBalance <<endl ;
 
       }
 
@@ -624,6 +761,7 @@ enum enTransactionOperation {WITHDRAW =1 ,DEPOSIT =2 ,BALANCETOTAL = 3 ,GoBackTo
                  {
                  case enTransactionOperation::WITHDRAW  :
                   PrintListClients()  ;
+                  MakeWithdrawlByACCOUNTnUMBER() ; 
                   GoBackToTransactionMainMenu() ;
                   break;
                  case enTransactionOperation::DEPOSIT  :
@@ -632,6 +770,7 @@ enum enTransactionOperation {WITHDRAW =1 ,DEPOSIT =2 ,BALANCETOTAL = 3 ,GoBackTo
                    GoBackToTransactionMainMenu() ;
                   break;
                  case enTransactionOperation::BALANCETOTAL  :
+                   PrintListClientWithTotalBalance() ;
                    GoBackToTransactionMainMenu() ;
                   break;
                 case enTransactionOperation::GoBackToMAINMENU :

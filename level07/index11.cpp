@@ -18,23 +18,15 @@ using namespace std ;
 /**
  * 
  * 
-✅ Leap Years:1968, 1996, 2000, 2020, 2024, 2400, 1988
-
-❌ Not Leap Years: 1971 ,1900, 2021, 2100, 2023
-
+00  01  02
+10  11  12
+20  21  22
 
 
  * 
  * 
+ 
  */
-
-
-
-bool IsLeapYear(int Number)
-{
-
-     return ( ( Number % 400 == 0) ||  (Number % 4 == 0 && Number % 100 != 0 ))  ;
-}
 
 
 int main() {
@@ -47,12 +39,7 @@ int main() {
 
    //cin.ignore(1,'\n') ;
 
-   int Number = MyLib::ReadNumber("\n Enter a number ? ")  ;
 
-   if(IsLeapYear(Number))
-   printf(" %d is leap  year " , Number) ;
-   else
-   printf(" %d is not  leap  year " , Number) ;
 
 
 
