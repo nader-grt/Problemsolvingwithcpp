@@ -19,6 +19,13 @@
 
 
     public:
+
+
+              int RandomNumber(short From,short To)
+              {
+
+                return 10;
+              }
           clsUtil()
           {
 
