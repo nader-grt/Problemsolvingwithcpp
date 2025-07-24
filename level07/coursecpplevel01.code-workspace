@@ -1,0 +1,40 @@
+{
+	"folders": [
+		{
+			"path": "../coursecpplevel01"
+		},
+		{
+			"path": "../coursecpplevel02"
+		},
+		{
+			"path": "../level01"
+		},
+		{
+			"path": "../level02"
+		},
+		{
+			"path": "../level03"
+		},
+		{
+			"path": "../level04"
+		},
+		{
+			"path": "../level04Project"
+		},
+		{
+			"path": "../level05"
+		},
+		{
+			"path": "../level06"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../level08"
+		},
+		{
+			"path": "../output"
+		}
+	]
+}

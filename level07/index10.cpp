@@ -17,7 +17,7 @@ using namespace std ;
 
 bool  IsLeapYear(short Year)
 {
-       return (Year % 400 == 0  || (Year % 4 == 0 && Year % 100 != 0)) ? 29 : 28  ;
+       return  (Year % 400 == 0  || (Year % 4 == 0 && Year % 100 != 0)) ? 29 : 28  ;
 }
 
 short OrderDayByRuleWithGregorianCalendar(short Year,short Month,short Day)

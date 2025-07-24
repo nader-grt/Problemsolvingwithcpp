@@ -211,15 +211,17 @@ enum enTransactionOperation {WITHDRAW =1 ,DEPOSIT =2 ,BALANCETOTAL = 3 ,GoBackTo
              string folderName = GetFolderName()  ;
            //  FULLPATH  = baseDir + folderName + "HOME.txt" ;
             
-
+       // using this path /home/nader/coursecpp/level04Project/output
                do
                {
                             client =       ReadNewClient()  ; 
 
             string line =      ConvertRecordToLine(client) ;
+
+        //    cout<<"hhhhhhhhhhh "<<line <<endl ;
                     cout<<" Do want to add new record ? ";
                     cin>>Answer ;
-                   
+                   //
                 if(Answer && IsExistFolderByName(baseDir,folderName))
                 {
                     AddRecordToFile(baseDir,folderName,line)  ;
@@ -395,6 +397,7 @@ enum enTransactionOperation {WITHDRAW =1 ,DEPOSIT =2 ,BALANCETOTAL = 3 ,GoBackTo
                        PrintClientDetails(Client)  ;
 
                        cout<<"\n\n \n Are you sure Do you want to Delete this client [y/n] ";
+                       cin>>Answer  ;
 
                         if(Answer == 'y' || Answer == 'Y')
                         {

@@ -1,0 +1,234 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <limits>
+#include <cstdlib>    
+#include <ctime>     
+#include <iomanip> 
+#include <vector>
+#include <fstream>
+#include <filesystem>
+
+
+#include "../../coursecpp/level05/LibraryOrPackage/MyLib.h" 
+
+
+using namespace std ;
+
+
+
+
+
+
+
+
+
+
+
+class clsPerson
+{
+private:
+  int _ID ;
+  string _FirstName ;
+  string _LastName ;
+  string _Phone  ;
+  string _Email ;
+public:
+    clsPerson()
+    {
+
+    }
+
+    clsPerson(int Id ,string firstName,string lastName,string phone,string email)
+    {
+       _FirstName = firstName ;
+       _LastName = lastName ;
+       _Phone   = phone ;
+       _Email  = email ;
+    }
+        int  getID()
+        {
+            return  _ID ;
+        }
+
+     void setFirstName(string firstName)
+     {
+        _FirstName = firstName ;
+     }
+
+     string getFirstName()
+     {
+
+        return _FirstName ;
+     }
+
+     void setLastName(string lastName)
+     {
+        _LastName  = lastName  ;
+     }
+
+
+
+     string getLastName()
+     {
+
+        return _LastName  ;
+     }
+
+
+     void setEmail(string email)
+     {
+        _Email = email ;
+     }
+
+
+     string getEmail()
+     {
+        return _Email  ;
+     }
+
+
+     void setPhone(string phone)
+     {
+        _Phone = phone ;
+     }
+
+     string getPhone()
+     {
+        return _Phone ;
+     }
+
+
+
+     void SendEmail(string Subject , string Body)
+     {
+        cout<<"\nThe follwing message sent succesufully to email: "<<_Email <<endl ;
+        cout<<Subject<<endl ;
+        cout<<Body<<endl ;
+
+     }
+
+
+     void SendSmS(string Message)
+     {
+      
+         cout<<"\nThe follwing SMS sent succesufully to phone: "<<_Phone <<endl ;
+         cout<<Message<<endl ;
+
+     }
+
+
+     void PrintInfo()
+     {
+
+        cout<<"\nDetails Info";
+        cout<<"\n--------------------------\n";
+
+        cout<<"The First Name "<<_FirstName <<endl ;
+        cout<<"The Last Name " <<_LastName <<endl ;
+        cout<<"The Full Name " << _FirstName + " " + _LastName <<endl ;
+        cout<<"The Phone "  <<_Phone <<endl ;
+        cout<<"The Email " <<_Email <<endl ;
+
+     }
+
+    ~clsPerson()
+    {
+
+
+    }
+};
+
+
+
+
+
+class clsEmployee  : public clsPerson
+{
+    private:
+    float _Salary ;
+    string _Departement ;
+    string _Title  ;
+
+    public :
+
+
+
+
+       void setTitle(string title)
+     {
+        _Title = title ;
+     }
+     string getTitle()
+     {
+        return _Title  ;
+     }
+
+       void setSalary(string salary)
+     {
+        _Salary = salary ;
+     }
+     string getSalary()
+     {
+        return _Salary  ;
+     }
+
+
+     void setDepartement(string departement)
+     {
+        _Departement = departement ;
+     }
+     string getDepartement()
+     {
+        return _Departement  ;
+     }
+
+
+};
+
+
+
+
+int main() {
+   
+   cout<<"======================================================================\n";
+   cout<<"===                Training using c++ languages App               ====\n"                              ;
+   cout<<"======================================================================\n";
+
+  srand((unsigned)time(NULL)); 
+
+   //cin.ignore(1,'\n') ;
+
+            clsEmployee  Employee  ;
+
+            Employee.setFirstName("Nader") ;
+            Employee.setLastName("Chargui") ;
+            Employee.setEmail("charguinadar@gmail.com")  ;
+            Employee.setPhone("+216 56 14 85 14")  ;
+            Employee.SendEmail("Hi","How are you") ;
+            Employee.SendSmS("How are you")  ;
+
+            Employee.PrintInfo() ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   cout<<"\n \n \n \n \n \n \n \n \n \n " ;
+
+     cout<<"\n" ;
+     cout<<"\n" ;
+    return 0;
+}
